@@ -28,6 +28,8 @@ We used XLS-20 and Hooks on the XRP Ledger in order to dynamically mint NFTs to 
 
 [![Hackathon stream ep 2](https://raw.githubusercontent.com/hammertoe/nft_raffle/main/images/hackathon-ep2-image.jpg)](https://cinnamon.video/watch?v=889017736968012801)
 
+[![Hackathon stream ep 3](https://raw.githubusercontent.com/hammertoe/nft_raffle/main/images/hackathon-ep3-image.jpg)](https://cinnamon.video/watch?v=889847728106898740)
+
 ## Challenges we ran into
 
 The Hooks Builder UI was brand new and as yet unreleased when we were using it. So learning how the UI worked as well as how Hooks themselves worked was a bit of a challenge. As we remembering how to code in C!
