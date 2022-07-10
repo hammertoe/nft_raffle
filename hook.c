@@ -288,12 +288,17 @@ int64_t hook(uint32_t reserved ) {
     }
 
     int64_t num_tickets = otxn_drops / drops_required;
-    // TRACEVAR(num_tickets);
+    TRACEVAR(num_tickets);
 
-    // if (num_tickets < 1)
-    // {
-    //     rollback(SBUF("Crowdsale: Must purchase at least one"), 2);
-    // }
+    if (num_tickets < 1)
+    {
+         rollback(SBUF("Crowdsale: Must purchase at least one"), 2);
+    }
+
+    if (num_tickets > 8)
+    {
+         rollback(SBUF("Crowdsale: Can not purchase more than 8 in single transaction"), 2);
+    }
 
     // ----------------------------------------------------->
     // BUILD URI LIST
