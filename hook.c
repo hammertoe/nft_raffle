@@ -215,6 +215,8 @@ int64_t cbak(uint32_t reserved) {
     return 0;
 }
 
+struct vstr { char* str; int len; };
+
 int64_t hook(uint32_t reserved ) {
 
     TRACESTR("Crowdsale.c: Called.");
@@ -294,23 +296,15 @@ int64_t hook(uint32_t reserved ) {
     // }
 
     // ----------------------------------------------------->
-    // FETCH PARAMETERS
+    // BUILD URI LIST
 
-    // IDE: Parameters 1 - URI
-    // name: uri
-    // value: 697066733A2F2F516D614374444B5A4656767666756676626479346573745A626851483744586831364354707631686F776D424779
+    struct vstr uris[] = {                                                                                             
+        { SBUF("uri1://blah111111111111111111111111111111111") },                                                      
+        { SBUF("uri2://blah") }                                                                                        
+     };
 
-    uint8_t pname[] = { 0x75U, 0x72U, 0x69U };
-    //uint8_t uri_value[53];
-
-    char* uris[] = {"ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-1.jpg",
-                    "ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-1.jpg"};
-    //char* uris[] = {"697066733a2f2f6261666b7265696632776869376733776578727271796c72373570647766696d727079343569346d686b6275336276766c7733726d3636676537653f66696c656e616d653d6e69632d6e66742d312e6a7067",
-    //                "697066733a2f2f6261666b7265696632776869376733776578727271796c72373570647766696d727079343569346d686b6275336276766c7733726d3636676537653f66696c656e616d653d6e69632d6e66742d312e6a7067"};
-
-
-    uint8_t *uri_value = uris[num_tickets-1];
-    int64_t value_len = 89; // XXX needs to be dynamic
+    TRACEVAR(uris[0].len);
+    TRACEHEX(uris[0].str);
 
     // TRACEHEX(uri_value); // <- value
 
@@ -363,9 +357,9 @@ int64_t hook(uint32_t reserved ) {
     // BUILD MINT TX
 
     // TX LEN + ENCODING (2) + URI LEN <- BAD BAD SMELLY
-    unsigned char mint_tx[PREPARE_NFT_MINT_SIMPLE_SIZE + 2 + value_len];
+    unsigned char mint_tx[PREPARE_NFT_MINT_SIMPLE_SIZE + 2 + uris[num_tickets-1].len];
     // prepare tx
-    PREPARE_NFT_MINT_SIMPLE(mint_tx, tflags, nft_taxon, uri_value, value_len);
+    PREPARE_NFT_MINT_SIMPLE(mint_tx, tflags, nft_taxon, uris[num_tickets-1].str, uris[num_tickets-1].len);
 
     TRACEHEX(mint_tx)
 
