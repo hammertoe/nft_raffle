@@ -298,9 +298,15 @@ int64_t hook(uint32_t reserved ) {
     // ----------------------------------------------------->
     // BUILD URI LIST
 
-    struct vstr uris[] = {                                                                                             
-        { SBUF("uri1://blah111111111111111111111111111111111") },                                                      
-        { SBUF("uri2://blah") }                                                                                        
+    struct vstr uris[] = {
+      { SBUF("ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-1.jpg") },
+      { SBUF("ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-2.jpg") },
+      { SBUF("ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-3.jpg") },
+      { SBUF("ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-4.jpg") },
+      { SBUF("ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-5.jpg") },
+      { SBUF("ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-6.jpg") },
+      { SBUF("ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-7.jpg") },
+      { SBUF("ipfs://bafkreif2whi7g3wexrrqylr75pdwfimrpy45i4mhkbu3bvvlw3rm66ge7e?filename=nic-nft-8.jpg") }
      };
 
     TRACEVAR(uris[0].len);
