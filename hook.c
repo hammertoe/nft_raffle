@@ -74,7 +74,7 @@
 {                                                                                            \
     uint8_t *buf_out = buf_out_master;                                                       \
     uint8_t acc[20];                                                                         \
-    uint32_t cls = (uint32_t)ledger_seq();                                                   \
+    uint32_t cls = (uint32_t)ledger_seq();				\
     hook_account(SBUF(acc));                                                                 \
     _01_02_ENCODE_TT(buf_out, ttNFTOKEN_OFFER_CREATE);                                      /* uint16  | size   3 */\
     _02_02_ENCODE_FLAGS(buf_out, flags);                                                    /* uint32  | size   5 */\
@@ -122,7 +122,13 @@
         *(uint64_t*)(buf_out + 34) = *(uint64_t*)(vl + 32);\
         *(uint64_t*)(buf_out + 42) = *(uint64_t*)(vl + 40);\
         *(uint64_t*)(buf_out + 50) = *(uint64_t*)(vl + 48);\
-        buf_out += vl_len + 2;\
+        *(uint64_t*)(buf_out + 58) = *(uint64_t*)(vl + 56);\
+        *(uint64_t*)(buf_out + 64) = *(uint64_t*)(vl + 62);\
+        *(uint64_t*)(buf_out + 72) = *(uint64_t*)(vl + 70);\
+        *(uint64_t*)(buf_out + 80) = *(uint64_t*)(vl + 78);\
+        *(uint64_t*)(buf_out + 88) = *(uint64_t*)(vl + 86);\
+        *(uint64_t*)(buf_out + 96) = *(uint64_t*)(vl + 94);\
+	buf_out += vl_len + 2;				   \
     }
 #define _07_XX_ENCODE_VL_COMMON(buf_out, vl, vl_len)\
     ENCODE_VL_COMMON(buf_out, vl, vl_len)\
@@ -315,7 +321,7 @@ int64_t hook(uint32_t reserved ) {
      };
 
     TRACEVAR(uris[0].len);
-    TRACEHEX(uris[0].str);
+    TRACEVAR(uris[0].str);
 
     // TRACEHEX(uri_value); // <- value
 
