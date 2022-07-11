@@ -1,0 +1,3 @@
+[submodule "hammertoe-hackathon"]
+	path = hammertoe-hackathon
+	url = git@github.com:dangell7/hammertoe-hackathon.git
